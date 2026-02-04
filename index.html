@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Password</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #111;
+      color: white;
+      font-family: Arial;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>Enter Password</h2>
+    <input type="password" id="password" placeholder="Password">
+    <br>
+    <button onclick="checkPassword()">Submit</button>
+    <p id="error" style="color:red;"></p>
+  </div>
 
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById("password").value;
+      const correctPassword = "1234"; // change this
+
+      if (pass === correctPassword) {
+        window.location.href = "wheel.html";
+      } else {
+        document.getElementById("error").innerText = "Wrong password!";
+      }
+    }
+  </script>
+</body>
+</html>
