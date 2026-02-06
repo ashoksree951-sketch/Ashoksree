@@ -2,22 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Spin the Wheel</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Random Selector</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #222;
+      padding: 25px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 80px;
+      margin-top: 10px;
+      padding: 8px;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #00ffcc;
+    }
+  </style>
 </head>
 <body>
 
-  <h1>🎡 Spin the Wheel</h1>
+  <div class="box">
+    <h2>🎯 Random Selector</h2>
+    <p>Enter options (comma separated)</p>
 
-  <div class="wheel-container">
-    <canvas id="wheel" width="400" height="400"></canvas>
-    <div class="pointer">▼</div>
+    <textarea id="options" placeholder="Option 1, Option 2, Option 3"></textarea>
+
+    <button onclick="pick()">SELECT</button>
+
+    <div id="result"></div>
   </div>
 
-  <button onclick="spin()">SPIN</button>
+  <script>
+    function pick() {
+      const input = document.getElementById("options").value;
+      const items = input.split(",").map(i => i.trim()).filter(i => i);
 
-  <p id="result"></p>
+      if (items.length === 0) {
+        document.getElementById("result").innerText = "Enter some options!";
+        return;
+      }
 
-  <script src="script.js"></script>
+      const randomIndex = Math.floor(Math.random() * items.length);
+      document.getElementById("result").innerText =
+        "Selected: " + items[randomIndex];
+    }
+  </script>
+
 </body>
 </html>
