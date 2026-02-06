@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dice Game 🎲</title>
+  <style>
+    body {
+      background: radial-gradient(circle, #1a1a1a, #000);
+      color: #fff;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+    .card {
+      background: #222;
+      padding: 25px;
+      border-radius: 16px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      animation: pop 0.6s ease;
+    }
+    h1 { margin-bottom: 10px; }
+    .dice {
+      font-size: 90px;
+      margin: 15px 0;
+      animation: shake 0.4s;
+    }
+    button {
+      padding: 12px 22px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      background: #00ffd5;
+      color: #000;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 15px;
+      font-size: 18px;
+      min-height: 40px;
+    }
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(8deg); }
+      50% { transform: rotate(-8deg); }
+      75% { transform: rotate(8deg); }
+      100% { transform: rotate(0deg); }
+    }
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>🎲 Dice Game</h1>
+    <p>Roll and get a challenge!</p>
+
+    <div id="dice" class="dice">🎲</div>
+
+    <button onclick="roll()">ROLL DICE</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const challenges = {
+      1: "Tell a fun fact about yourself",
+      2: "Do 10 jumping jacks",
+      3: "Share your favorite movie",
+      4: "Send a nice message to a friend",
+      5: "Sing a line from a song",
+      6: "Choose someone else to roll"
+    };
+
+    function roll() {
+      const number = Math.floor(Math.random() * 6) + 1;
+      document.getElementById("dice").textContent = number;
+      document.getElementById("result").textContent =
+        "Result: " + challenges[number];
+    }
+  </script>
+
+</body>
+</html>
