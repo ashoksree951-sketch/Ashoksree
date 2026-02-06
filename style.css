@@ -1,13 +1,40 @@
 body {
+  background: #111;
+  color: #fff;
+  font-family: Arial, sans-serif;
   text-align: center;
-  font-family: Arial;
+  padding-top: 20px;
+}
+
+.wheel-container {
+  position: relative;
+  width: 400px;
+  margin: 20px auto;
+}
+
+.pointer {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 30px;
+  color: red;
+}
+
+canvas {
+  border-radius: 50%;
   background: #222;
-  color: white;
 }
 
 button {
-  padding: 12px 20px;
+  padding: 12px 25px;
   font-size: 18px;
-  margin-top: 20px;
   cursor: pointer;
+  margin-top: 20px;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
