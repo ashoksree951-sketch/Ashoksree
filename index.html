@@ -1,44 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Enter Password</title>
-  <style>
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #111;
-      color: white;
-      font-family: Arial;
-    }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin-top: 10px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Spin the Wheel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div>
-    <h2>Enter Password</h2>
-    <input type="password" id="password" placeholder="Password">
-    <br>
-    <button onclick="checkPassword()">Submit</button>
-    <p id="error" style="color:red;"></p>
+
+  <h1>🎡 Spin the Wheel</h1>
+
+  <div class="wheel-container">
+    <canvas id="wheel" width="400" height="400"></canvas>
+    <div class="pointer">▼</div>
   </div>
 
-  <script>
-    function checkPassword() {
-      const pass = document.getElementById("password").value;
-      const correctPassword = "svs"; // change this
+  <button onclick="spin()">SPIN</button>
 
-      if (pass === correctPassword) {
-        window.location.href = "spin.html";
-      } else {
-        document.getElementById("error").innerText = "Wrong password!";
-      }
-    }
-  </script>
+  <p id="result"></p>
+
+  <script src="script.js"></script>
 </body>
 </html>
