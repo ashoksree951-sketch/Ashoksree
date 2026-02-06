@@ -2,71 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Random Selector</title>
+  <title>Welcome 🎉</title>
   <style>
     body {
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff416c, #ff4b2b);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow: hidden;
     }
-    .box {
-      background: #222;
-      padding: 25px;
-      border-radius: 10px;
-      width: 300px;
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      padding: 30px;
+      border-radius: 20px;
       text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      animation: pop 1s ease;
     }
-    textarea {
-      width: 100%;
-      height: 80px;
-      margin-top: 10px;
-      padding: 8px;
-      font-size: 14px;
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 32px;
     }
+
+    p {
+      opacity: 0.9;
+      margin-bottom: 25px;
+    }
+
     button {
-      margin-top: 15px;
-      padding: 10px 20px;
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
       font-size: 16px;
+      border: none;
+      border-radius: 30px;
       cursor: pointer;
+      background: white;
+      color: #ff416c;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    #result {
-      margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
-      color: #00ffcc;
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    @keyframes pop {
+      from {
+        transform: scale(0.7);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: -50px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 50%;
+      animation: rise 10s infinite ease-in;
+    }
+
+    @keyframes rise {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120vh); }
     }
   </style>
 </head>
 <body>
 
-  <div class="box">
-    <h2>🎯 Random Selector</h2>
-    <p>Enter options (comma separated)</p>
+  <div class="card">
+    <h1>🎉 Welcome!</h1>
+    <p>Choose what you want to open</p>
 
-    <textarea id="options" placeholder="Option 1, Option 2, Option 3"></textarea>
-
-    <button onclick="pick()">SELECT</button>
-
-    <div id="result"></div>
+    <button onclick="go('selector.html')">🎯 Random Selector</button>
+    <button onclick="go('wheel.html')">🎡 Spin Wheel</button>
+    <button onclick="go('game.html')">🎮 Fun Page</button>
   </div>
 
+  <!-- bubbles -->
+  <div class="bubble" style="left:10%; width:40px; height:40px; animation-duration:8s;"></div>
+  <div class="bubble" style="left:30%; width:20px; height:20px; animation-duration:6s;"></div>
+  <div class="bubble" style="left:50%; width:60px; height:60px; animation-duration:10s;"></div>
+  <div class="bubble" style="left:70%; width:25px; height:25px; animation-duration:7s;"></div>
+  <div class="bubble" style="left:85%; width:35px; height:35px; animation-duration:9s;"></div>
+
   <script>
-    function pick() {
-      const input = document.getElementById("options").value;
-      const items = input.split(",").map(i => i.trim()).filter(i => i);
-
-      if (items.length === 0) {
-        document.getElementById("result").innerText = "Enter some options!";
-        return;
-      }
-
-      const randomIndex = Math.floor(Math.random() * items.length);
-      document.getElementById("result").innerText =
-        "Selected: " + items[randomIndex];
+    function go(page) {
+      window.location.href = page;
     }
   </script>
 
